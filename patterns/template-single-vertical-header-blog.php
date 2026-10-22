@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Right-aligned single post
- * Slug: twentytwentyfive/template-single-vertical-header-blog
+ * Slug: timeless/template-single-vertical-header-blog
  * Template Types: posts, single
  * Viewport width: 1400
  * Inserter: no
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
@@ -79,8 +79,8 @@
 				<!-- /wp:spacer -->
 			</div>
 			<!-- /wp:group -->
-			<!-- wp:group {"ariaLabel":"<?php esc_attr_e( 'Post navigation', 'twentytwentyfive' ); ?>","tagName":"nav","align":"full","style":{"border":{"top":{"color":"var:preset|color|accent-6","width":"1px"}},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"left"}} -->
-			<nav class="wp-block-group alignfull" aria-label="<?php esc_attr_e( 'Post navigation', 'twentytwentyfive' ); ?>" style="border-top-color:var(--wp--preset--color--accent-6);border-top-width:1px;padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
+			<!-- wp:group {"ariaLabel":"<?php esc_attr_e( 'Post navigation', 'timeless' ); ?>","tagName":"nav","align":"full","style":{"border":{"top":{"color":"var:preset|color|accent-6","width":"1px"}},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"left"}} -->
+			<nav class="wp-block-group alignfull" aria-label="<?php esc_attr_e( 'Post navigation', 'timeless' ); ?>" style="border-top-color:var(--wp--preset--color--accent-6);border-top-width:1px;padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
 				<!-- wp:post-navigation-link {"type":"previous","showTitle":true,"arrow":"arrow"} /-->
 				<!-- wp:post-navigation-link {"showTitle":true,"arrow":"arrow"} /-->
 			</nav>
@@ -89,7 +89,7 @@
 		<!-- /wp:group -->
 		<!-- wp:group {"tagName":"aside","align":"wide","layout":{"type":"constrained","justifyContent":"left"},"style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"}}}} -->
 		<aside class="wp-block-group alignwide" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0">
-			<!-- wp:pattern {"slug":"twentytwentyfive/comments"} /-->
+			<!-- wp:pattern {"slug":"timeless/comments"} /-->
 		</aside>
 		<!-- /wp:group -->
 	</div>

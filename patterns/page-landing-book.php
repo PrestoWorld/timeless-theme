@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Landing page for book
- * Slug: twentytwentyfive/page-landing-book
- * Categories: twentytwentyfive_page, featured
+ * Slug: timeless/page-landing-book
+ * Categories: timeless_page, featured
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template
@@ -11,14 +11,14 @@
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
 
-<!-- wp:pattern {"slug":"twentytwentyfive/hero-book"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/cta-book-links"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/banner-about-book"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/cta-book-locations"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/text-faqs"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/cta-newsletter"} /-->
+<!-- wp:pattern {"slug":"timeless/hero-book"} /-->
+<!-- wp:pattern {"slug":"timeless/cta-book-links"} /-->
+<!-- wp:pattern {"slug":"timeless/banner-about-book"} /-->
+<!-- wp:pattern {"slug":"timeless/cta-book-locations"} /-->
+<!-- wp:pattern {"slug":"timeless/text-faqs"} /-->
+<!-- wp:pattern {"slug":"timeless/cta-newsletter"} /-->

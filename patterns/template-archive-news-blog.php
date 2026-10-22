@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: News blog archive
- * Slug: twentytwentyfive/template-archive-news-blog
+ * Slug: timeless/template-archive-news-blog
  * Template Types: archive
  * Viewport width: 1400
  * Inserter: no
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
@@ -30,7 +30,7 @@
 	<!-- /wp:group -->
 	<!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
 	<div class="wp-block-group alignwide">
-		<!-- wp:pattern {"slug":"twentytwentyfive/template-query-loop-news-blog"} /-->
+		<!-- wp:pattern {"slug":"timeless/template-query-loop-news-blog"} /-->
 	</div>
 	<!-- /wp:group -->
 </main>

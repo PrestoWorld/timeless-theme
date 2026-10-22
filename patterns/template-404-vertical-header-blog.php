@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Right-aligned blog, 404
- * Slug: twentytwentyfive/template-404-vertical-header-blog
+ * Slug: timeless/template-404-vertical-header-blog
  * Template Types: 404
  * Viewport width: 1400
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
@@ -26,7 +26,7 @@
 			<div style="height:var(--wp--preset--spacing--50)" aria-hidden="true" class="wp-block-spacer"></div>
 			<!-- /wp:spacer -->
 
-			<!-- wp:pattern {"slug":"twentytwentyfive/hidden-404"} /-->
+			<!-- wp:pattern {"slug":"timeless/hidden-404"} /-->
 
 			<!-- wp:spacer {"height":"var:preset|spacing|50"} -->
 			<div style="height:var(--wp--preset--spacing--50)" aria-hidden="true" class="wp-block-spacer"></div>

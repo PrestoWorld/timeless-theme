@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Centered header
- * Slug: twentytwentyfive/header-centered
+ * Slug: timeless/header-centered
  * Categories: header
  * Block Types: core/template-part/header
  * Description: Header with centered site title and navigation.
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>

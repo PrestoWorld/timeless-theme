@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Shop homepage
- * Slug: twentytwentyfive/page-shop-home
- * Categories: twentytwentyfive_page
+ * Slug: timeless/page-shop-home
+ * Categories: timeless_page
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template
@@ -11,11 +11,11 @@
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
 
-<!-- wp:pattern {"slug":"twentytwentyfive/banner-intro-image"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/grid-with-categories"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/media-instagram-grid"} /-->
+<!-- wp:pattern {"slug":"timeless/banner-intro-image"} /-->
+<!-- wp:pattern {"slug":"timeless/grid-with-categories"} /-->
+<!-- wp:pattern {"slug":"timeless/media-instagram-grid"} /-->

@@ -9,30 +9,30 @@ Browse open issues: https://core.trac.wordpress.org/search?q=twenty+twenty-five.
 
 ---
 
-# Twenty Twenty-Five
+# Timeless
 
 Welcome to the development repository for the default theme that will launch with [WordPress 6.7](https://make.wordpress.org/core/6-7/).
 
 ## About
 
-While ideating Twenty Twenty-Five, one recurring idea was that simple things should be intuitive while complex things should be possible. This concept of simplicity and complexity leads to a reliable foundation for extending a default WordPress experience to make it yours.
+While ideating Timeless, one recurring idea was that simple things should be intuitive while complex things should be possible. This concept of simplicity and complexity leads to a reliable foundation for extending a default WordPress experience to make it yours.
 
-Twenty Twenty-Five embodies ultimate flexibility and adaptability, showcasing the many ways WordPress enables people to tell their stories with many patterns and styles to choose from. The glimpses of natural beauty and ancestry woven into the theme evoke ideas of impermanence, the passage of time, and continuous evolution.
+Timeless embodies ultimate flexibility and adaptability, showcasing the many ways WordPress enables people to tell their stories with many patterns and styles to choose from. The glimpses of natural beauty and ancestry woven into the theme evoke ideas of impermanence, the passage of time, and continuous evolution.
 
-[Introducing Twenty Twenty-Five](https://make.wordpress.org/core/2024/08/15/introducing-twenty-twenty-five/)
+[Introducing Timeless](https://make.wordpress.org/core/2024/08/15/introducing-twenty-twenty-five/)
 
-Twenty Twenty-Five is built as a [block theme](https://developer.wordpress.org/block-editor/how-to-guides/themes/block-theme-overview/). The theme aims to ship with as little CSS as possible: our goal is for all theme styles to be configured through [`theme.json`](https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/) and editable through Global Styles. The theme development team will work closely with [Gutenberg](https://github.com/wordpress/gutenberg) contributors to build design tools in the block editor that enable this goal.
+Timeless is built as a [block theme](https://developer.wordpress.org/block-editor/how-to-guides/themes/block-theme-overview/). The theme aims to ship with as little CSS as possible: our goal is for all theme styles to be configured through [`theme.json`](https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/) and editable through Global Styles. The theme development team will work closely with [Gutenberg](https://github.com/wordpress/gutenberg) contributors to build design tools in the block editor that enable this goal.
 
-If you'd like to see the latest and greatest version of Twenty Twenty-Five, [there is a demo site](https://2025.wordpress.net) that is automatically updated every five minutes with the newest commits to this repo.
+If you'd like to see the latest and greatest version of Timeless, [there is a demo site](https://2025.wordpress.net) that is automatically updated every five minutes with the newest commits to this repo.
 
 ## Contributing
 
 Connect your GitHub account to your WordPress.org account to receive props for your contributions.
 Please see the tutorials on [Linking your GitHub and w.org profiles](https://make.wordpress.org/core/handbook/tutorials/linking-your-github-and-w-org-profiles/).
 
-If you would like to contribute code, the list of [open issues](https://github.com/WordPress/twentytwentyfive/issues) is a great place to start looking for tasks. [Pull requests](https://github.com/WordPress/twentytwentyfive/pulls) are preferred when linked to an existing issue.
+If you would like to contribute code, the list of [open issues](https://github.com/WordPress/timeless/issues) is a great place to start looking for tasks. [Pull requests](https://github.com/WordPress/timeless/pulls) are preferred when linked to an existing issue.
 
-Contributing is not just for developers! There are many opportunities to help with [testing](#getting-started), triage, discussion, design, building patterns and templates, and more. Please look through [open issues](https://github.com/WordPress/twentytwentyfive/issues), and join in wherever you feel most comfortable.
+Contributing is not just for developers! There are many opportunities to help with [testing](#getting-started), triage, discussion, design, building patterns and templates, and more. Please look through [open issues](https://github.com/WordPress/timeless/issues), and join in wherever you feel most comfortable.
 
 If you'd like to help with triage, open a new issue and one of the maintainers will help you get set up with the ability to add labels to issues and PRs.
 
@@ -95,7 +95,7 @@ Make sure to add alt text to your images and to make sure to remove the IDs from
 
 ```
 <!-- wp:image {"id":125,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="http://wp-stable.test/wp-content/themes/twentytwentyfive/assets/images/project.webp" alt="" class="wp-image-125"/></figure>
+<figure class="wp-block-image size-large"><img src="http://wp-stable.test/wp-content/themes/timeless/assets/images/project.webp" alt="" class="wp-image-125"/></figure>
 <!-- /wp:image -->
 ```
 
@@ -103,13 +103,13 @@ would turn into
 
 ```
 <!-- wp:image {"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/project.webp" alt="<?php echo esc_attr_x( 'Picture of a building', 'Alt text for project picture', 'twentytwentyfive' ); ?>"/></figure>
+<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/project.webp" alt="<?php echo esc_attr_x( 'Picture of a building', 'Alt text for project picture', 'timeless' ); ?>"/></figure>
 <!-- /wp:image -->
 ```
 
 - **Image license attribution**
 
-When adding images to the theme, we need to add the license attribution to the readme.txt file. For Twenty Twenty-Five almost all images come from rawpixel.com, and we have stored them [in this folder](https://tinyurl.com/tt5-images).
+When adding images to the theme, we need to add the license attribution to the readme.txt file. For Timeless almost all images come from rawpixel.com, and we have stored them [in this folder](https://tinyurl.com/tt5-images).
 
 The filename of each image includes the ID, and the way to get the license is by following the link `rawpixel.com/image/$id`. Let's take the following filename as an example:
 
@@ -158,7 +158,7 @@ turns into
 
 and
 
-`<!-- wp:template-part {"slug":"header-portfolio","theme":"twentytwentyfive","area":"header","tagName":"header"} /-->`
+`<!-- wp:template-part {"slug":"header-portfolio","theme":"timeless","area":"header","tagName":"header"} /-->`
 
 turns into
 

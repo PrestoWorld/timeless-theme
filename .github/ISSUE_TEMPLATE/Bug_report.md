@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a bug with the Twenty Twenty-Five theme
+about: Report a bug with the Timeless theme
 labels: "[Type] Bug"
 
 ---

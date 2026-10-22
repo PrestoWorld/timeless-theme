@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Intro with left-aligned description
- * Slug: twentytwentyfive/banner-intro
+ * Slug: timeless/banner-intro
  * Categories: banner
  * Description: A large left-aligned heading with a brand name emphasized in bold.
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
@@ -18,8 +18,8 @@
 		<?php
 			printf(
 				/* translators: %s is the brand name, e.g., 'Fleurs'. */
-				esc_html_x( 'We\'re %s, our mission is to deliver exquisite flower arrangements that not only adorn living spaces but also inspire a deeper appreciation for natural beauty.', 'Pattern placeholder text.', 'twentytwentyfive' ),
-				'<strong>' . esc_html_x( 'Fleurs', 'Example brand name.', 'twentytwentyfive' ) . '</strong>'
+				esc_html_x( 'We\'re %s, our mission is to deliver exquisite flower arrangements that not only adorn living spaces but also inspire a deeper appreciation for natural beauty.', 'Pattern placeholder text.', 'timeless' ),
+				'<strong>' . esc_html_x( 'Fleurs', 'Example brand name.', 'timeless' ) . '</strong>'
 			);
 			?>
 	</h2>

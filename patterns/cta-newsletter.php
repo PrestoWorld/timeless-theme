@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Newsletter sign-up
- * Slug: twentytwentyfive/cta-newsletter
+ * Slug: timeless/cta-newsletter
  * Keywords: call-to-action, newsletter
  * Categories: call-to-action
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
@@ -16,11 +16,11 @@
 	<!-- wp:group {"style":{"dimensions":{"minHeight":"360px"},"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"flex","orientation":"vertical","verticalAlignment":"center","justifyContent":"center"}} -->
 	<div class="wp-block-group" style="min-height:360px;margin-top:0;margin-bottom:0">
 		<!-- wp:heading {"textAlign":"center","fontSize":"xx-large"} -->
-		<h2 class="wp-block-heading has-text-align-center has-xx-large-font-size"><?php esc_html_e( 'Sign up to get daily stories', 'twentytwentyfive' ); ?></h2>
+		<h2 class="wp-block-heading has-text-align-center has-xx-large-font-size"><?php esc_html_e( 'Sign up to get daily stories', 'timeless' ); ?></h2>
 		<!-- /wp:heading -->
 
 		<!-- wp:paragraph {"align":"center","className":"is-style-text-subtitle"} -->
-		<p class="has-text-align-center is-style-text-subtitle"><?php esc_html_e( 'Get access to a curated collection of moments in time featuring photographs from historical relevance.', 'twentytwentyfive' ); ?></p>
+		<p class="has-text-align-center is-style-text-subtitle"><?php esc_html_e( 'Get access to a curated collection of moments in time featuring photographs from historical relevance.', 'timeless' ); ?></p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:spacer {"height":"var:preset|spacing|30"} -->
@@ -29,7 +29,7 @@
 
 		<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 		<div class="wp-block-buttons"><!-- wp:button {"textAlign":"center"} -->
-			<div class="wp-block-button"><a class="wp-block-button__link has-text-align-center wp-element-button"><?php esc_html_e( 'Subscribe', 'twentytwentyfive' ); ?></a></div>
+			<div class="wp-block-button"><a class="wp-block-button__link has-text-align-center wp-element-button"><?php esc_html_e( 'Subscribe', 'timeless' ); ?></a></div>
 		<!-- /wp:button --></div>
 		<!-- /wp:buttons -->
 	</div>

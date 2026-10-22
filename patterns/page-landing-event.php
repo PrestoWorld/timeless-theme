@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Landing page for event
- * Slug: twentytwentyfive/page-landing-event
- * Categories: twentytwentyfive_page, featured
+ * Slug: timeless/page-landing-event
+ * Categories: timeless_page, featured
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template
@@ -11,13 +11,13 @@
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
 
-<!-- wp:pattern {"slug":"twentytwentyfive/hero-full-width-image"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/heading-and-paragraph-with-image"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/banner-description-images-grid"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/text-faqs"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/contact-centered-social-link"} /-->
+<!-- wp:pattern {"slug":"timeless/hero-full-width-image"} /-->
+<!-- wp:pattern {"slug":"timeless/heading-and-paragraph-with-image"} /-->
+<!-- wp:pattern {"slug":"timeless/banner-description-images-grid"} /-->
+<!-- wp:pattern {"slug":"timeless/text-faqs"} /-->
+<!-- wp:pattern {"slug":"timeless/contact-centered-social-link"} /-->

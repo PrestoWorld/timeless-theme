@@ -1,17 +1,17 @@
 {
-	"name": "wordpress/twentytwentyfive",
+	"name": "wordpress/timeless",
 	"type": "package",
 	"description": "The default WordPress theme for 2025",
 	"keywords": [
 		"WordPress",
 		"Themes"
 	],
-	"homepage": "https://github.com/WordPress/twentytwentyfive",
+	"homepage": "https://github.com/WordPress/timeless",
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Contributors",
-			"homepage": "https://github.com/WordPress/twentytwentyfive/contributors.md"
+			"homepage": "https://github.com/WordPress/timeless/contributors.md"
 		}
 	],
 	"config": {

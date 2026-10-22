@@ -1,12 +1,12 @@
 <?php
 /**
  * Title: Text-only blog, posts
- * Slug: twentytwentyfive/template-query-loop-text-blog
+ * Slug: timeless/template-query-loop-text-blog
  * Inserter: no
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
@@ -16,7 +16,7 @@
 	<div class="wp-block-group">
 		<!-- wp:query-no-results {"align":"wide","fontSize":"medium"} -->
 			<!-- wp:paragraph -->
-			<p><?php echo esc_html_x( 'Sorry, but nothing was found. Please try a search with different keywords.', 'Message explaining that there are no results returned from a search.', 'twentytwentyfive' ); ?></p>
+			<p><?php echo esc_html_x( 'Sorry, but nothing was found. Please try a search with different keywords.', 'Message explaining that there are no results returned from a search.', 'timeless' ); ?></p>
 			<!-- /wp:paragraph -->
 		<!-- /wp:query-no-results -->
 	</div>

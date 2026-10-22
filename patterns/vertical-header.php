@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Vertical header
- * Slug: twentytwentyfive/vertical-header
+ * Slug: timeless/vertical-header
  * Categories: header
  * Block Types: core/template-part/vertical-header
  * Description: Vertical Header with site title and navigation
@@ -9,7 +9,7 @@
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>

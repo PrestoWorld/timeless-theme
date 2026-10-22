@@ -1,5 +1,5 @@
-<!-- Thanks for contributing to Twenty Twenty-Five! Please follow the Contributing Guidelines:
-https://github.com/WordPress/twentytwentyfive/blob/trunk/README.md#contributing -->
+<!-- Thanks for contributing to Timeless! Please follow the Contributing Guidelines:
+https://github.com/WordPress/timeless/blob/trunk/README.md#contributing -->
 
 **Description**
 

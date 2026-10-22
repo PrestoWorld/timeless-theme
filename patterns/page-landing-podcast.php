@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Landing page for podcast
- * Slug: twentytwentyfive/page-landing-podcast
- * Categories: twentytwentyfive_page, featured
+ * Slug: timeless/page-landing-podcast
+ * Categories: timeless_page, featured
  * Keywords: starter
  * Block Types: core/post-content
  * Post Types: page, wp_template
@@ -11,13 +11,13 @@
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
 
-<!-- wp:pattern {"slug":"twentytwentyfive/hero-podcast"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/heading-and-paragraph-with-image"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/logos"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/grid-videos"} /-->
-<!-- wp:pattern {"slug":"twentytwentyfive/cta-newsletter"} /-->
+<!-- wp:pattern {"slug":"timeless/hero-podcast"} /-->
+<!-- wp:pattern {"slug":"timeless/heading-and-paragraph-with-image"} /-->
+<!-- wp:pattern {"slug":"timeless/logos"} /-->
+<!-- wp:pattern {"slug":"timeless/grid-videos"} /-->
+<!-- wp:pattern {"slug":"timeless/cta-newsletter"} /-->

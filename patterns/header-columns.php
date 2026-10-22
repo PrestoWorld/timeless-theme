@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Header with columns
- * Slug: twentytwentyfive/header-columns
+ * Slug: timeless/header-columns
  * Categories: header
  * Block Types: core/template-part/header
  * Description: Header with site title and navigation in columns.
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>

@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Header with large title
- * Slug: twentytwentyfive/header-large-title
+ * Slug: timeless/header-large-title
  * Categories: header
  * Block Types: core/template-part/header
  * Description: Header with large site title and right-aligned navigation.
  *
  * @package WordPress
  * @subpackage Twenty_Twenty_Five
- * @since Twenty Twenty-Five 1.0
+ * @since Timeless 1.0
  */
 
 ?>
