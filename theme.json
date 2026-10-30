@@ -5,6 +5,7 @@
 		"appearanceTools": true,
 		"color": {
 			"defaultDuotone": false,
+			"duotone": [],
 			"defaultGradients": false,
 			"defaultPalette": false,
 			"palette": [
