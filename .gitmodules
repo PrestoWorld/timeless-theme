@@ -1,0 +1,3 @@
+[submodule "resources/blocks"]
+	path = resources/blocks
+	url = git@github.com:PrestoWorld/context-builder-blocks.git
