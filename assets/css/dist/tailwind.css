@@ -79,6 +79,7 @@
     --drop-shadow-xs: 0 1px 1px rgb(0 0 0 / 0.05);
     --animate-bounce: bounce 1s infinite;
     --blur-xs: 4px;
+    --blur-md: 12px;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -286,6 +287,9 @@
   .top-24 {
     top: calc(var(--spacing) * 24);
   }
+  .right-0 {
+    right: 0px;
+  }
   .right-1\.5 {
     right: calc(var(--spacing) * 1.5);
   }
@@ -301,6 +305,9 @@
   .-bottom-5 {
     bottom: calc(var(--spacing) * -5);
   }
+  .bottom-0 {
+    bottom: 0px;
+  }
   .bottom-2 {
     bottom: calc(var(--spacing) * 2);
   }
@@ -309,6 +316,9 @@
   }
   .-left-6 {
     left: calc(var(--spacing) * -6);
+  }
+  .left-0 {
+    left: 0px;
   }
   .left-2 {
     left: calc(var(--spacing) * 2);
@@ -491,6 +501,9 @@
   .h-full {
     height: 100%;
   }
+  .min-h-\[48px\] {
+    min-height: 48px;
+  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -578,6 +591,9 @@
   .min-w-0 {
     min-width: 0px;
   }
+  .min-w-\[56px\] {
+    min-width: 56px;
+  }
   .flex-1 {
     flex: 1;
   }
@@ -631,6 +647,9 @@
   }
   .items-start {
     align-items: flex-start;
+  }
+  .justify-around {
+    justify-content: space-around;
   }
   .justify-between {
     justify-content: space-between;
@@ -854,6 +873,9 @@
   .bg-\[\#FAF9F5\] {
     background-color: #FAF9F5;
   }
+  .bg-\[\#FAF9F5\]\/95 {
+    background-color: color-mix(in oklab, #FAF9F5 95%, transparent);
+  }
   .bg-amber-50 {
     background-color: var(--color-amber-50);
   }
@@ -924,6 +946,12 @@
     background-color: color-mix(in srgb, #fff 15%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-white) 15%, transparent);
+    }
+  }
+  .bg-white\/25 {
+    background-color: color-mix(in srgb, #fff 25%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-white) 25%, transparent);
     }
   }
   .bg-white\/95 {
@@ -1321,6 +1349,10 @@
   .underline-offset-4 {
     text-underline-offset: 4px;
   }
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   .placeholder-\[\#8C877D\]::-moz-placeholder {
     color: #8C877D;
   }
@@ -1348,6 +1380,10 @@
   }
   .shadow-2xs {
     --tw-shadow: 0 1px var(--tw-shadow-color, rgb(0 0 0 / 0.05));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-\[0_-4px_16px_rgba\(0\,0\,0\,0\.04\)\] {
+    --tw-shadow: 0 -4px 16px var(--tw-shadow-color, rgba(0,0,0,0.04));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-lg {
@@ -1393,6 +1429,10 @@
   }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .backdrop-blur-md {
+    --tw-backdrop-blur: blur(var(--blur-md));
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
   .backdrop-blur-xs {
     --tw-backdrop-blur: blur(var(--blur-xs));
@@ -1459,6 +1499,30 @@
     .group-hover\:text-\[\#1C1C1E\]:is(:where(.group):hover *) {
       color: #1C1C1E;
     }
+  }
+  .selection\:bg-\[\#E05A38\]\/15 ::-moz-selection {
+    background-color: color-mix(in oklab, #E05A38 15%, transparent);
+  }
+  .selection\:bg-\[\#E05A38\]\/15 ::selection {
+    background-color: color-mix(in oklab, #E05A38 15%, transparent);
+  }
+  .selection\:bg-\[\#E05A38\]\/15::-moz-selection {
+    background-color: color-mix(in oklab, #E05A38 15%, transparent);
+  }
+  .selection\:bg-\[\#E05A38\]\/15::selection {
+    background-color: color-mix(in oklab, #E05A38 15%, transparent);
+  }
+  .selection\:text-\[\#E05A38\] ::-moz-selection {
+    color: #E05A38;
+  }
+  .selection\:text-\[\#E05A38\] ::selection {
+    color: #E05A38;
+  }
+  .selection\:text-\[\#E05A38\]::-moz-selection {
+    color: #E05A38;
+  }
+  .selection\:text-\[\#E05A38\]::selection {
+    color: #E05A38;
   }
   .placeholder\:text-\[\#8C877D\]::-moz-placeholder {
     color: #8C877D;
@@ -1550,6 +1614,9 @@
   .focus\:ring-2:focus {
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .focus\:ring-\[\#E05A38\]:focus {
+    --tw-ring-color: #E05A38;
   }
   .focus\:ring-\[\#E05A38\]\/30:focus {
     --tw-ring-color: color-mix(in oklab, #E05A38 30%, transparent);
@@ -1654,6 +1721,9 @@
   @media (width >= 48rem) {
     .md\:flex {
       display: flex;
+    }
+    .md\:hidden {
+      display: none;
     }
     .md\:max-w-sm {
       max-width: var(--container-sm);

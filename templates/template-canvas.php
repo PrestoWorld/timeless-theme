@@ -42,3 +42,4 @@ $storeSlogan = (string) ($data['store_slogan'] ?? 'Tiệm Sách & Thuê Sách To
     <?= $content ?>
 </body>
 </html>
+
