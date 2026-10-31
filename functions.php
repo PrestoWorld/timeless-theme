@@ -39,26 +39,6 @@ if ( ! function_exists( 'timeless_editor_style' ) ) :
 endif;
 add_action( 'after_setup_theme', 'timeless_editor_style' );
 
-// Enqueues style.css on the front.
-if ( ! function_exists( 'timeless_enqueue_styles' ) ) :
-	/**
-	 * Enqueues style.css on the front.
-	 *
-	 * @since Timeless 1.0
-	 *
-	 * @return void
-	 */
-	function timeless_enqueue_styles() {
-		wp_enqueue_style(
-			'timeless-style',
-			get_parent_theme_file_uri( 'style.css' ),
-			array(),
-			wp_get_theme()->get( 'Version' )
-		);
-	}
-endif;
-add_action( 'wp_enqueue_scripts', 'timeless_enqueue_styles' );
-
 // Registers custom block styles.
 if ( ! function_exists( 'timeless_block_styles' ) ) :
 	/**
@@ -156,3 +136,51 @@ if ( ! function_exists( 'timeless_format_binding' ) ) :
 		}
 	}
 endif;
+
+/**
+ * Forces the HTML lang attribute to Vietnamese (matches the target frontend).
+ */
+if ( ! function_exists( 'timeless_language_attributes' ) ) :
+	function timeless_language_attributes( $attr ) {
+		$attr = preg_replace( '/lang="[^"]*"/', 'lang="vi"', $attr );
+		if ( stripos( $attr, 'lang=' ) === false ) {
+			$attr = trim( $attr ) . ' lang="vi"';
+		}
+		return $attr;
+	}
+endif;
+add_filter( 'language_attributes', 'timeless_language_attributes' );
+
+/**
+ * Injects head meta tags, font preconnects and document title.
+ */
+if ( ! function_exists( 'timeless_head_meta' ) ) :
+	function timeless_head_meta() {
+		?>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+		<title>CheepHub - Tiệm Sách &amp; Thuê Sách Toàn Quốc 20k/45 Ngày</title>
+		<meta name="description" content="CheepHub - Nền tảng mua bán, ký gửi và cho thuê sách cũ giá rẻ toàn quốc chỉ 20.000đ/45 ngày. Trải nghiệm đọc sách văn minh, tối giản và tiết kiệm." />
+		<?php
+	}
+endif;
+add_action( 'wp_head', 'timeless_head_meta', 1 );
+
+/**
+ * Enqueues the compiled Tailwind CSS on the front (Gutenberg block rendering only, no SPA).
+ */
+if ( ! function_exists( 'timeless_enqueue_assets' ) ) :
+	function timeless_enqueue_assets() {
+		wp_enqueue_style(
+			'timeless-tailwind',
+			get_parent_theme_file_uri( 'assets/css/dist/tailwind.css' ),
+			array(),
+			wp_get_theme()->get( 'Version' )
+		);
+	}
+endif;
+add_action( 'wp_enqueue_scripts', 'timeless_enqueue_assets' );
+

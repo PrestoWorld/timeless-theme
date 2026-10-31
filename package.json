@@ -25,13 +25,16 @@
 		"@wordpress/stylelint-config": "^22.5.0",
 		"ajv": "^8.17.1",
 		"ajv-draft-04": "^1.0.0",
+		"autoprefixer": "^10.6.2",
 		"chalk": "^5.3.0",
 		"fast-glob": "^3.3.2",
 		"parse5-html-rewriting-stream": "^7.0.0",
+		"postcss": "^8.5.32",
 		"semver": "^7.6.3",
 		"string-progressbar": "^1.0.4",
 		"stylelint": "^14.16.1",
-		"table": "^6.8.2"
+		"table": "^6.8.2",
+		"tailwindcss": "^4.3.3"
 	},
 	"scripts": {
 		"lint:css": "stylelint **/*.css -i .gitignore",
@@ -39,6 +42,10 @@
 		"lint:php": "composer run-script lint",
 		"lint:php:fix": "composer run-script format",
 		"lint:theme": "node theme-utils.mjs validate-theme",
-		"lint:patterns:fix": "node theme-utils.mjs escape-patterns --text-domain=timeless"
+		"lint:patterns:fix": "node theme-utils.mjs escape-patterns --text-domain=timeless",
+		"build:css": "node build-css.js"
+	},
+	"dependencies": {
+		"@tailwindcss/postcss": "^4.3.3"
 	}
 }

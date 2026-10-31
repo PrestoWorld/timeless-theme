@@ -1,10 +1,1155 @@
-<!-- wp:template-part {"slug":"header"} /-->
+<!-- wp:group {"className":"min-h-screen flex flex-col bg-[#FAF9F5] text-[#1C1C1E]","layout":{"type":"constrained"}} -->
+<div class="min-h-screen flex flex-col bg-[#FAF9F5] text-[#1C1C1E] wp-block-group"><div class="wp-block-group__inner-container">
 
-<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--60)">
-	<!-- wp:pattern {"slug":"timeless/hidden-blog-heading"} /-->
-	<!-- wp:pattern {"slug":"timeless/template-query-loop"} /-->
+<!-- 1. HEADER (Ribbon + Main Navbar) -->
+<header class="sticky top-0 z-40 shadow-md">
+    <!-- Micro Top Ribbon -->
+    <div class="bg-[#18181B] text-[#EDEAE2] text-[11px] py-1.5 px-4 border-b border-black/40">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2 truncate">
+                <span class="inline-flex items-center px-1.5 py-0.5 rounded bg-[#E05A38] text-white font-bold text-[9px] uppercase tracking-wider shrink-0">
+                    Ưu đãi
+                </span>
+                <span class="truncate text-[#DDD9CE]">
+                    Thuê sách toàn quốc <strong class="text-white font-semibold">20.000₫ / 45 ngày</strong> · Hoàn 100% tiền cọc trong 24h
+                </span>
+            </div>
+            <div class="hidden md:flex items-center gap-4 text-[#A09C91] shrink-0 text-[11px]">
+                <a href="#warehouses" class="hover:text-white transition-colors flex items-center gap-1.5">
+                    <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>3 Kho: Tân Bình · Q7 · Hà Nội</span>
+                </a>
+                <a href="tel:0931335634" class="hover:text-white transition-colors flex items-center gap-1.5">
+                    <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>093.133.5634</span>
+                </a>
+                <a href="#consignment" class="text-[#E05A38] hover:text-[#ff7856] font-semibold transition-colors">
+                    Ký gửi sách
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar (#E05A38) -->
+    <div class="bg-[#E05A38] text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+            <div class="flex items-center justify-between gap-3 sm:gap-6">
+                <!-- Brand & Categories -->
+                <div class="flex items-center gap-3 shrink-0">
+                    <button class="lg:hidden p-2 text-white hover:bg-white/15 rounded-xl border border-white/20 transition-colors" aria-label="Mở menu">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    </button>
+
+                    <!-- Brand Logo -->
+                    <a href="/bookpress/demo-bookpress" class="flex items-center gap-2 text-left group">
+                        <div class="w-8 h-8 rounded-lg bg-white text-[#E05A38] group-hover:scale-105 transition-transform flex items-center justify-center shadow-xs">
+                            <svg class="w-4 h-4 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <div class="flex items-baseline gap-1">
+                            <span class="font-serif text-xl font-bold tracking-tight text-white drop-shadow-xs">
+                                CheepHub
+                            </span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-300"></span>
+                        </div>
+                    </a>
+
+                    <!-- Danh mục Button -->
+                    <div class="relative hidden lg:block">
+                        <button type="button" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors bg-white/15 hover:bg-white/25 text-white border border-white/20">
+                            <svg class="w-3.5 h-3.5 text-amber-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                            <span>Danh mục</span>
+                            <svg class="w-3 h-3 transition-transform duration-150" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- Primary Navigation Links (Desktop) -->
+                    <nav class="hidden xl:flex items-center gap-1 pl-1 text-xs font-medium text-white/90">
+                        <a href="#catalog" class="px-2.5 py-1.5 rounded-lg hover:text-white hover:bg-white/15 transition-colors bg-white/25 text-white font-bold">
+                            Tủ sách
+                        </a>
+                        <a href="#rental-guide" class="px-2.5 py-1.5 rounded-lg hover:text-white hover:bg-white/15 transition-colors flex items-center gap-1">
+                            <svg class="w-3 h-3 text-amber-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                            <span>Thuê 20k/45 ngày</span>
+                        </a>
+                        <a href="#clearance" class="px-2.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-[#1C1C1E] font-bold transition-colors flex items-center gap-1 shadow-xs">
+                            <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                            <span>Xả kho từ 9k</span>
+                        </a>
+                        <a href="#calculator" class="px-2.5 py-1.5 rounded-lg hover:text-white hover:bg-white/15 transition-colors flex items-center gap-1">
+                            <svg class="w-3 h-3 text-amber-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+                            <span>Tính cọc</span>
+                        </a>
+                        <a href="#tracking" class="px-2.5 py-1.5 rounded-lg hover:text-white hover:bg-white/15 transition-colors flex items-center gap-1">
+                            <svg class="w-3 h-3 text-amber-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span>Tra cứu</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Central Search Input -->
+                <div class="flex-1 max-w-xs md:max-w-sm relative hidden sm:block">
+                    <div class="relative flex items-center">
+                        <input type="text" placeholder="Tìm sách, tác giả..." class="w-full pl-8 pr-8 py-1.5 bg-white border border-transparent focus:outline-none rounded-lg text-xs text-[#1C1C1E] placeholder:text-[#8C877D] shadow-xs" />
+                        <svg class="w-3.5 h-3.5 text-[#8C877D] absolute left-2.5 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-2">
+                    <a href="#cart" class="flex items-center gap-2 px-3 py-1.5 bg-white hover:bg-[#FAF9F5] text-[#E05A38] rounded-lg transition-colors text-xs font-semibold shadow-xs">
+                        <div class="relative">
+                            <svg class="w-3.5 h-3.5 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </div>
+                        <span class="hidden sm:inline font-bold">Giỏ</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 2. MAIN CONTENT -->
+<main class="flex-1">
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden border-b border-[#E8E6DF] bg-gradient-to-b from-[#FAF9F5] via-[#FAF9F5] to-[#F3F0E6]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <!-- Left: Editorial Value Proposition -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center gap-2 text-xs sm:text-sm font-medium tracking-wide text-[#706D65]">
+                        <span class="text-[#E05A38] font-bold">CheepHub</span>
+                        <span aria-hidden="true">·</span>
+                        <span>Dịch Vụ Thuê Sách 20.000₫ / 45 Ngày</span>
+                        <span aria-hidden="true">·</span>
+                        <span>Hoàn Cọc 100%</span>
+                    </div>
+
+                    <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#1C1C1E] leading-[1.15] text-balance">
+                        Lan tỏa văn hóa đọc, trao đời sống mới cho từng trang sách cũ.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-[#5A574F] leading-relaxed max-w-2xl">
+                        Kho tàng hơn 10.000 đầu sách kinh điển, kỹ năng và văn học. Thuê đọc 45 ngày chỉ với 20.000₫ hoặc mua sở hữu với mức giá chỉ bằng 20% - 40% giá bìa.
+                    </p>
+
+                    <!-- Search Bar -->
+                    <div class="pt-2 max-w-xl">
+                        <div class="relative flex items-center shadow-xs">
+                            <svg class="w-5 h-5 text-[#8C877D] absolute left-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            <input type="text" placeholder="Tìm theo tựa sách (Harry Potter, Jack Ma, Truyện Kiều...)" class="w-full pl-12 pr-28 py-3.5 bg-white border border-[#DDD9CE] rounded-xl text-sm sm:text-base placeholder-[#9E9A90] text-[#1C1C1E] focus:outline-none focus:ring-2 focus:ring-[#E05A38]/30 focus:border-[#E05A38] transition-all" />
+                            <a href="#catalog" class="absolute right-1.5 px-4 py-2 bg-[#1C1C1E] text-white hover:bg-[#333336] rounded-lg text-xs sm:text-sm font-medium transition-colors">
+                                Tìm ngay
+                            </a>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 mt-2.5 text-xs text-[#706D65]">
+                            <span class="font-medium">Gợi ý tìm kiếm:</span>
+                            <a href="#catalog" class="hover:text-[#E05A38] underline decoration-[#DDD9CE]">Kinh tế</a>
+                            <a href="#catalog" class="hover:text-[#E05A38] underline decoration-[#DDD9CE]">Văn học</a>
+                            <a href="#catalog" class="hover:text-[#E05A38] underline decoration-[#DDD9CE]">Truyện Kiều</a>
+                            <a href="#catalog" class="hover:text-[#E05A38] underline decoration-[#DDD9CE]">Jack Ma</a>
+                            <a href="#catalog" class="hover:text-[#E05A38] underline decoration-[#DDD9CE]">Đồng giá 20k</a>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <a href="#catalog" class="px-6 py-3 bg-[#E05A38] hover:bg-[#C84A2A] text-white text-sm font-semibold rounded-xl transition-all shadow-sm flex items-center gap-2 active:scale-98">
+                            <span>Khám phá tủ sách</span>
+                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                        <a href="#rental-guide" class="px-5 py-3 bg-white border border-[#DDD9CE] hover:border-[#1C1C1E] text-[#1C1C1E] text-sm font-medium rounded-xl transition-colors flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#706D65]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                            <span>Cách thức thuê 4 bước</span>
+                        </a>
+                        <a href="#calculator" class="px-4 py-3 text-[#5A574F] hover:text-[#1C1C1E] text-sm font-medium transition-colors underline underline-offset-4">
+                            Bảng tính cọc & hoàn tiền
+                        </a>
+                    </div>
+
+                    <!-- 3 Value Pillars -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#E8E6DF] max-w-xl text-[#4A4A4A]">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-1.5 text-xs font-semibold text-[#1C1C1E]">
+                                <svg class="w-3.5 h-3.5 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Hoàn Cọc 100%</span>
+                            </div>
+                            <p class="text-[11px] text-[#706D65]">Chuyển khoản trong 24h sau khi nhận lại sách</p>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-1.5 text-xs font-semibold text-[#1C1C1E]">
+                                <svg class="w-3.5 h-3.5 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18.5" r="2.5"/><circle cx="7" cy="18.5" r="2.5"/></svg>
+                                <span>Freeship Chiều Về</span>
+                            </div>
+                            <p class="text-[11px] text-[#706D65]">Đơn thuê từ 3 cuốn được miễn phí trả hàng</p>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-1.5 text-xs font-semibold text-[#1C1C1E]">
+                                <svg class="w-3.5 h-3.5 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                                <span>Minh Bạch 100%</span>
+                            </div>
+                            <p class="text-[11px] text-[#706D65]">Ghi rõ % mới, ảnh thật từng vết ố, nếp gấp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Visual Image Card -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-[#E8E6DF] bg-white group">
+                            <img src="/content/themes/timeless/assets/images/hero_sach_cu_bookstore_1790916234404.jpg" alt="Không gian tiệm Sách Cũ mộc mạc và ấm áp" class="w-full aspect-[4/3] object-cover group-hover:scale-102 transition-transform duration-500" />
+                            <div class="p-4 bg-white/95 backdrop-blur-xs border-t border-[#E8E6DF] space-y-2">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="font-semibold text-[#1C1C1E]">Kho Sách CheepHub Toàn Quốc</span>
+                                    <span class="font-mono font-bold text-[#E05A38]">20.000₫ / 45 ngày</span>
+                                </div>
+                                <div class="text-xs text-[#706D65] flex items-center justify-between">
+                                    <span>Kho CheepHub Tân Bình (HCM) · Q7 · Đại Mỗ (HN)</span>
+                                    <span class="text-[#1C1C1E] font-medium">Hỗ trợ COD</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Quote Note -->
+                        <div class="hidden sm:block absolute -bottom-5 -left-6 bg-white p-3.5 rounded-xl border border-[#E8E6DF] shadow-md max-w-[240px]">
+                            <p class="font-serif italic text-xs text-[#4A4A4A] leading-snug">
+                                "Sách không chỉ để đọc một lần rồi xếp xó, mà để lưu chuyển qua ngàn bàn tay bè bạn."
+                            </p>
+                            <p class="text-[10px] text-[#8C877D] mt-1.5 font-medium">— CheepHub Community</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MID-PAGE EDITORIAL BANNER -->
+    <section class="bg-[#FAF9F5] border-t border-[#E8E6DF] py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-[#1C1C1E] text-white rounded-3xl p-6 sm:p-12 overflow-hidden relative shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="flex items-center gap-2 text-xs font-mono text-[#E05A38]">
+                            <svg class="w-4 h-4 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                            <span>MÔ HÌNH THƯ VIỆN LƯU HÀNH THẾ HỆ MỚI</span>
+                        </div>
+                        <h2 class="font-serif text-2xl sm:text-4xl font-semibold leading-tight text-white">
+                            Đọc thả ga không lo chật kệ sách. Trả lại kho nhận đủ 100% tiền cọc.
+                        </h2>
+                        <p class="text-xs sm:text-sm text-[#C8C4B8] leading-relaxed max-w-xl">
+                            Với chi phí cố định 20.000₫/45 ngày cho một cuốn sách, bạn có thể tiếp cận hàng nghìn tri thức tinh hoa mà không phải băn khoăn về ngân sách mua sách mới.
+                        </p>
+                        <div class="flex flex-wrap items-center gap-3 pt-2">
+                            <a href="#calculator" class="px-5 py-2.5 bg-[#E05A38] hover:bg-[#c94d2d] text-white text-xs font-semibold rounded-xl transition-colors flex items-center gap-1.5">
+                                <span>Thử tính tiền cọc &amp; hoàn trả</span>
+                                <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
+                            <a href="#rental-guide" class="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-medium rounded-xl transition-colors">
+                                Xem hướng dẫn 4 bước
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-3 text-xs">
+                        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-1">
+                            <div class="text-[#E05A38] font-bold text-lg font-mono">20.000₫</div>
+                            <div class="font-medium text-white">Gói thuê 45 ngày</div>
+                            <div class="text-[11px] text-[#A8A499]">Chỉ bằng giá 1 ly trà đá</div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-1">
+                            <div class="text-emerald-400 font-bold text-lg font-mono">24 Giờ</div>
+                            <div class="font-medium text-white">Chuyển khoản hoàn cọc</div>
+                            <div class="text-[11px] text-[#A8A499]">Ngay khi kho nhận lại sách</div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-1">
+                            <div class="text-white font-bold text-lg font-mono">03 Kho Sách</div>
+                            <div class="font-medium text-white">Tân Bình · Q7 · Hà Nội</div>
+                            <div class="text-[11px] text-[#A8A499]">Đến trực tiếp hoặc ship COD</div>
+                        </div>
+                        <div class="bg-white/10 p-4 rounded-xl border border-white/10 space-y-1">
+                            <div class="text-amber-300 font-bold text-lg font-mono">Freeship</div>
+                            <div class="font-medium text-white">Chiều nhận sách về</div>
+                            <div class="text-[11px] text-[#A8A499]">Khi thuê từ 3 cuốn trở lên</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOK CATALOG SECTION -->
+    <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="mb-4">
+            <ol class="flex items-center gap-1.5 text-xs text-[#706D65]">
+                <li><a href="/bookpress/demo-bookpress" class="hover:text-[#1C1C1E] transition-colors">Trang chủ</a></li>
+                <li><svg class="w-3.5 h-3.5 text-[#B8B4A8]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+                <li><span class="font-semibold text-[#1C1C1E]">Tủ sách</span></li>
+            </ol>
+        </nav>
+
+        <!-- Catalog Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-[#E8E6DF]">
+            <div>
+                <div class="flex items-center gap-2 text-xs font-medium text-[#706D65] uppercase tracking-wider">
+                    <span>Kho Sách Tuyển Chọn</span>
+                    <span aria-hidden="true">·</span>
+                    <span>12 cuốn sẵn sàng giao ngay</span>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-[#1C1C1E] mt-1">
+                    Tủ Sách Tuyển Chọn &amp; Cho Thuê
+                </h2>
+                <p class="text-xs sm:text-sm text-[#706D65] mt-1 max-w-2xl">
+                    Tất cả sách đều được kiểm định chất lượng, khử khuẩn bằng tia UV và sẵn sàng cho thuê với mức phí cố định 20.000₫/45 ngày hoặc mua đứt tiết kiệm tới 89%.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-3 self-start md:self-auto shrink-0">
+                <div class="flex items-center gap-2 bg-white border border-[#DDD9CE] rounded-xl px-3 py-1.5 shadow-xs">
+                    <svg class="w-3.5 h-3.5 text-[#8C877D]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/></svg>
+                    <select class="bg-transparent text-xs font-medium text-[#1C1C1E] focus:outline-none cursor-pointer pr-1">
+                        <option>Sắp xếp: Nổi bật nhất</option>
+                        <option>Giảm giá sâu nhất (-89%)</option>
+                        <option>Giá: Thấp đến Cao (từ 9k)</option>
+                        <option>Giá: Cao đến Thấp</option>
+                        <option>Độ mới: Cao đến Thấp</option>
+                        <option>Năm xuất bản mới nhất</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catalog Body (Sidebar + Grid) -->
+        <div class="mt-8 flex flex-col lg:flex-row gap-8 items-start">
+            <!-- Left Sidebar Filter -->
+            <aside class="hidden lg:block w-72 shrink-0 sticky top-24">
+                <div class="bg-white border border-[#E8E6DF] rounded-2xl shadow-xs p-4 sm:p-5 space-y-6">
+                    <div class="border-b border-[#E8E6DF] pb-4 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-lg bg-[#FAF9F5] border border-[#DDD9CE] flex items-center justify-center text-[#1C1C1E]">
+                                <svg class="w-3.5 h-3.5 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg>
+                            </div>
+                            <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E]">Bộ Lọc Sách</h3>
+                        </div>
+                        <span class="text-[11px] text-[#706D65]">12 cuốn</span>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-[#1C1C1E]">Danh Mục Sách</span>
+                            <span class="text-[10px] text-[#8C877D] font-mono">8 danh mục</span>
+                        </div>
+                        <div class="space-y-1 text-xs">
+                            <button class="w-full text-left px-3 py-2 rounded-lg font-medium transition-all flex items-center justify-between bg-[#1C1C1E] text-white shadow-xs font-semibold">
+                                <span class="truncate">Tất cả</span>
+                                <span class="text-[10px] font-mono shrink-0 ml-2 text-white/80">12</span>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg font-medium transition-all flex items-center justify-between text-[#4A4A4A] hover:bg-[#FAF9F5] hover:text-[#1C1C1E]">
+                                <span class="truncate">Kinh tế &amp; Doanh nhân</span>
+                                <span class="text-[10px] font-mono shrink-0 ml-2 text-[#8C877D]">2</span>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg font-medium transition-all flex items-center justify-between text-[#4A4A4A] hover:bg-[#FAF9F5] hover:text-[#1C1C1E]">
+                                <span class="truncate">Văn học &amp; Nghệ thuật</span>
+                                <span class="text-[10px] font-mono shrink-0 ml-2 text-[#8C877D]">3</span>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg font-medium transition-all flex items-center justify-between text-[#4A4A4A] hover:bg-[#FAF9F5] hover:text-[#1C1C1E]">
+                                <span class="truncate">Kỹ năng &amp; Tâm lý</span>
+                                <span class="text-[10px] font-mono shrink-0 ml-2 text-[#8C877D]">2</span>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg font-medium transition-all flex items-center justify-between text-[#4A4A4A] hover:bg-[#FAF9F5] hover:text-[#1C1C1E]">
+                                <span class="truncate">Ngoại ngữ</span>
+                                <span class="text-[10px] font-mono shrink-0 ml-2 text-[#8C877D]">1</span>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg font-medium transition-all flex items-center justify-between text-[#4A4A4A] hover:bg-[#FAF9F5] hover:text-[#1C1C1E]">
+                                <span class="truncate">Giáo khoa &amp; Học tập</span>
+                                <span class="text-[10px] font-mono shrink-0 ml-2 text-[#8C877D]">2</span>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg font-medium transition-all flex items-center justify-between text-[#4A4A4A] hover:bg-[#FAF9F5] hover:text-[#1C1C1E]">
+                                <span class="truncate">Tôn giáo &amp; Tâm linh</span>
+                                <span class="text-[10px] font-mono shrink-0 ml-2 text-[#8C877D]">1</span>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg font-medium transition-all flex items-center justify-between text-[#4A4A4A] hover:bg-[#FAF9F5] hover:text-[#1C1C1E]">
+                                <span class="truncate">Xả kho đồng giá</span>
+                                <span class="text-[10px] font-mono shrink-0 ml-2 text-[#8C877D]">2</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mode Filter -->
+                    <div class="space-y-2.5 pt-4 border-t border-[#E8E6DF]">
+                        <span class="text-xs font-bold uppercase tracking-wider text-[#1C1C1E]">Hình Thức</span>
+                        <div class="space-y-1.5 text-xs text-[#4A4A4A]">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-[#1C1C1E]">
+                                <input type="radio" name="mode" checked class="text-[#E05A38] focus:ring-[#E05A38]" />
+                                <span>Tất cả hình thức</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-[#1C1C1E]">
+                                <input type="radio" name="mode" class="text-[#E05A38] focus:ring-[#E05A38]" />
+                                <span>Thuê đọc 20k/45 ngày</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-[#1C1C1E]">
+                                <input type="radio" name="mode" class="text-[#E05A38] focus:ring-[#E05A38]" />
+                                <span>Chỉ mua đứt</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Warehouse Filter -->
+                    <div class="space-y-2.5 pt-4 border-t border-[#E8E6DF]">
+                        <span class="text-xs font-bold uppercase tracking-wider text-[#1C1C1E]">Kho Sách</span>
+                        <div class="space-y-1.5 text-xs text-[#4A4A4A]">
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-[#1C1C1E]">
+                                <input type="radio" name="warehouse" checked class="text-[#E05A38] focus:ring-[#E05A38]" />
+                                <span>Tất cả các kho (3)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-[#1C1C1E]">
+                                <input type="radio" name="warehouse" class="text-[#E05A38] focus:ring-[#E05A38]" />
+                                <span>Kho Tân Bình (HCM)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-[#1C1C1E]">
+                                <input type="radio" name="warehouse" class="text-[#E05A38] focus:ring-[#E05A38]" />
+                                <span>Kho Q7 Happy Books</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer hover:text-[#1C1C1E]">
+                                <input type="radio" name="warehouse" class="text-[#E05A38] focus:ring-[#E05A38]" />
+                                <span>Kho Nam Từ Liêm (HN)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right: Book Grid (12 Books) -->
+            <div class="flex-1 w-full min-w-0">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+
+                    <!-- Book 1 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/vintage_book_collection_1790916263231.jpg" alt="Tình Yêu Thương (2004)" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-86%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Tân Bình</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">80% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Tôn giáo &amp; Tâm linh</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Tình Yêu Thương (2004) - Tuyển Tập 500 Câu Chuyện Đạo Đức
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Nhiều Tác Giả</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">9.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">65.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 2 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/book_reading_culture_rental_1790916250880.jpg" alt="Thiên Nhiên Việt Nam" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-31%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Tân Bình</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">90% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Giáo khoa &amp; Học tập</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Thiên Nhiên Việt Nam - Địa Lý Tự Nhiên Toàn Diện
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Lê Bá Thảo</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">110.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">160.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 3 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/hero_sach_cu_bookstore_1790916234404.jpg" alt="Harry Potter và Bảo Bối Tử Thần" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-81%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Tân Bình</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">70% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Văn học &amp; Nghệ thuật</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Harry Potter và Bảo Bối Tử Thần (Bìa Mềm Tập 7)
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">J.K. Rowling (Lý Lan dịch)</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">25.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">135.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 4 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/book_reading_culture_rental_1790916250880.jpg" alt="Tư Duy Nhanh Và Chậm" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-42%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Quận 7</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">85% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Kinh tế &amp; Doanh nhân</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Tư Duy Nhanh Và Chậm (Thinking, Fast and Slow)
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Daniel Kahneman</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">145.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">250.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 5 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/vintage_book_collection_1790916263231.jpg" alt="Dế Mèn Phiêu Lưu Ký" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-79%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Hà Nội</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">75% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Văn học &amp; Nghệ thuật</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Dế Mèn Phiêu Lưu Ký (Bản Màu Đẹp 2012)
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Tô Hoài</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">18.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">85.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 6 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/hero_sach_cu_bookstore_1790916234404.jpg" alt="Đắc Nhân Tâm" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-62%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Tân Bình</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">90% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Kỹ năng &amp; Tâm lý</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Đắc Nhân Tâm (Bản Bìa Cứng First News)
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Dale Carnegie</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">45.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">118.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 7 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/vintage_book_collection_1790916263231.jpg" alt="Oxford Advanced Learner's Dictionary" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-77%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Quận 7</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">70% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Ngoại ngữ</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Oxford Advanced Learner's Dictionary 8th Edition
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">A.S. Hornby</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">95.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">420.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 8 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/book_reading_culture_rental_1790916250880.jpg" alt="Nhà Giả Kim" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-63%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Hà Nội</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">85% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Văn học &amp; Nghệ thuật</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Nhà Giả Kim (The Alchemist)
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Paulo Coelho</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">29.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">79.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 9 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/hero_sach_cu_bookstore_1790916234404.jpg" alt="Cha Giàu Cha Nghèo" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-65%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Tân Bình</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">80% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Kinh tế &amp; Doanh nhân</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Cha Giàu Cha Nghèo (Tập 1 - Để Không Có Tiền Vẫn Tạo Ra Tiền)
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Robert T. Kiyosaki</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">32.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">92.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 10 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/vintage_book_collection_1790916263231.jpg" alt="Tâm Lý Học Tội Phạm" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-51%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Quận 7</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">95% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Kỹ năng &amp; Tâm lý</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Tâm Lý Học Tội Phạm &amp; Hành Vi
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Stanton E. Samenow</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">88.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">180.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 11 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/book_reading_culture_rental_1790916250880.jpg" alt="Tiếng Anh 12" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-88%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Hà Nội</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">75% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Giáo khoa &amp; Học tập</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Tiếng Anh 12 (Sách Giáo Khoa Thí Điểm Tập 1 &amp; 2)
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Bộ Giáo Dục &amp; Đào Tạo</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">9.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">72.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book 12 -->
+                    <div class="group flex flex-col bg-white border border-[#E8E6DF] rounded-2xl overflow-hidden hover:border-[#1C1C1E] transition-all hover:shadow-lg duration-200">
+                        <div class="relative aspect-[3/4] bg-[#F5F3EC] overflow-hidden cursor-pointer">
+                            <img class="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" src="/content/themes/timeless/assets/images/vintage_book_collection_1790916263231.jpg" alt="Kinh Pháp Cú" loading="lazy" />
+                            <div class="absolute top-2.5 left-2.5 bg-[#1C1C1E] text-white text-[11px] font-mono px-2 py-0.5 rounded font-medium shadow-xs">-68%</div>
+                            <div class="absolute top-2.5 right-2.5 bg-[#E05A38] text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-xs flex items-center gap-1">
+                                <svg class="w-2.5 h-2.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                <span>Thuê 20k</span>
+                            </div>
+                            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] bg-black/75 text-white/95 px-2 py-0.5 rounded backdrop-blur-xs flex items-center gap-1 truncate max-w-[85%]">
+                                    <svg class="w-2.5 h-2.5 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span>Tân Bình</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center gap-1.5 text-[11px] text-[#706D65] truncate">
+                                    <span class="font-semibold text-[#1C1C1E]">85% mới</span>
+                                    <span aria-hidden="true">·</span>
+                                    <span class="truncate">Tôn giáo &amp; Tâm linh</span>
+                                </div>
+                                <h3 class="font-serif text-sm sm:text-base font-semibold text-[#1C1C1E] leading-snug line-clamp-2 hover:text-[#E05A38] cursor-pointer transition-colors">
+                                    Kinh Pháp Cú (Dhammapada - Song Ngữ Giảng Giải)
+                                </h3>
+                                <p class="text-xs text-[#706D65] truncate">Thích Minh Châu</p>
+                            </div>
+                            <div class="pt-2.5 border-t border-[#F0EFEA] space-y-2">
+                                <div class="flex items-baseline justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-[#8C877D] block">Giá mua đứt:</span>
+                                        <span class="font-mono text-sm sm:text-base font-bold text-[#1C1C1E]">35.000₫</span>
+                                    </div>
+                                    <span class="text-[11px] font-mono text-[#9E9A90] line-through">110.000₫</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-1.5 pt-1">
+                                    <button class="py-1.5 px-2 bg-[#FAF9F5] border border-[#DDD9CE] hover:border-[#E05A38] hover:text-[#E05A38] text-[#1C1C1E] rounded-xl text-[11px] font-semibold transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                                        <span>Thuê 20k</span>
+                                    </button>
+                                    <button class="py-1.5 px-2 bg-[#1C1C1E] hover:bg-[#333336] text-white rounded-xl text-[11px] font-medium transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-xs">
+                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                                        <span>Mua ngay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
 </main>
-<!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"footer"} /-->
+<!-- 3. FOOTER -->
+<footer class="bg-[#1C1C1E] text-[#EDEAE2] border-t border-[#333336] pt-12 pb-24 md:pb-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+            <!-- Brand Info -->
+            <div class="lg:col-span-2 space-y-4">
+                <div class="flex items-baseline gap-1">
+                    <span class="font-serif text-2xl font-bold tracking-tight text-white">CheepHub</span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#E05A38]"></span>
+                </div>
+                <p class="text-xs text-[#A8A499] leading-relaxed max-w-sm">
+                    CheepHub - Nền tảng mua bán, ký gửi và cho thuê sách cũ giá rẻ toàn quốc chỉ 20.000₫/45 ngày. Giữ gìn và luân chuyển tri thức, lan tỏa tình yêu sách bền vững.
+                </p>
+                <div class="space-y-1.5 text-xs text-[#C8C4B8]">
+                    <div class="flex items-start gap-2">
+                        <svg class="w-4 h-4 text-[#E05A38] shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Kho CheepHub: 737/12 Lạc Long Quân, P.10, Q. Tân Bình, TP. Hồ Chí Minh</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-[#E05A38] shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>Hotline/Zalo: <strong>093.133.5634</strong> (Mr. Hùng)</span>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="pt-2 space-y-2">
+                    <span class="text-[11px] text-[#A8A499] font-medium block">
+                        Nhận tin sách hiếm &amp; xả kho đồng giá:
+                    </span>
+                    <form class="flex gap-2 max-w-sm">
+                        <input type="email" placeholder="Nhập email của bạn..." class="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-xs text-white placeholder-[#8C877D] focus:outline-none focus:border-[#E05A38]" />
+                        <button type="button" class="px-3 py-2 bg-[#E05A38] hover:bg-[#C84A2A] text-white rounded-lg text-xs font-medium transition-colors shrink-0">
+                            Đăng ký
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Column 1: Dịch vụ -->
+            <div class="space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-white">Dịch vụ sách</h4>
+                <ul class="space-y-2 text-[#A8A499]">
+                    <li><a href="#rental-guide" class="hover:text-white transition-colors">Dịch vụ thuê sách 20k</a></li>
+                    <li><a href="#calculator" class="hover:text-white transition-colors">Bảng tính cọc &amp; hoàn tiền</a></li>
+                    <li><a href="#tracking" class="hover:text-white transition-colors">Tra cứu hạn thuê 45 ngày</a></li>
+                    <li><a href="#consignment" class="hover:text-white transition-colors">Ký gửi sách cũ giá cao</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Hệ thống kho -->
+            <div class="space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-white">Hệ thống kho</h4>
+                <ul class="space-y-2 text-[#A8A499]">
+                    <li><a href="#warehouses" class="hover:text-white text-left transition-colors">Kho Cheephub (Tân Bình, HCM)</a></li>
+                    <li><a href="#warehouses" class="hover:text-white text-left transition-colors">Kho Happy Books (Quận 7, HCM)</a></li>
+                    <li><a href="#warehouses" class="hover:text-white text-left transition-colors">Kho HSTB (Nam Từ Liêm, HN)</a></li>
+                    <li><a href="#rental-guide" class="hover:text-white text-left transition-colors">Hướng dẫn trả sách bưu điện</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Cam kết -->
+            <div class="space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-white">Cam kết dịch vụ</h4>
+                <div class="space-y-2 text-[#A8A499]">
+                    <div class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <span>Hoàn cọc trong 24h</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <span>Kiểm định ảnh thật 100%</span>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <span>Hỗ trợ ship COD toàn quốc</span>
+                    </div>
+                    <div class="pt-2">
+                        <a href="https://facebook.com" target="_blank" rel="noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors">
+                            <svg class="w-3.5 h-3.5 text-[#1877F2]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                            <span>Cộng đồng Sách Cũ (1,9k)</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[#8C877D] text-[11px]">
+            <div>© 2026 CheepHub. Mua bán, ký gửi &amp; cho thuê sách cũ giá rẻ toàn quốc (20k/45 ngày).</div>
+            <div class="flex items-center gap-4">
+                <span>Thiết kế tối giản cho bạn đọc yêu sách</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- 4. MOBILE BOTTOM BAR (Fixed) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF9F5]/95 backdrop-blur-md border-t border-[#E8E6DF] px-2 py-1 flex items-center justify-around shadow-[0_-4px_16px_rgba(0,0,0,0.04)]">
+    <a href="/bookpress/demo-bookpress" class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] py-1 text-[#E05A38] transition-colors">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="text-[10px] font-medium mt-1">Trang chủ</span>
+    </a>
+    <a href="#catalog" class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] py-1 text-[#706D65] hover:text-[#1C1C1E] transition-colors">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span class="text-[10px] font-medium mt-1">Tủ sách</span>
+    </a>
+    <a href="#calculator" class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] py-1 text-[#706D65] hover:text-[#1C1C1E] transition-colors">
+        <svg class="w-5 h-5 text-[#E05A38]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+        <span class="text-[10px] font-medium mt-1">Tính cọc 20k</span>
+    </a>
+    <a href="#tracking" class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] py-1 text-[#706D65] hover:text-[#1C1C1E] transition-colors">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span class="text-[10px] font-medium mt-1">Tra cứu</span>
+    </a>
+    <a href="#cart" class="flex flex-col items-center justify-center min-w-[56px] min-h-[48px] py-1 text-[#1C1C1E] transition-colors">
+        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="text-[10px] font-medium mt-1">Giỏ hàng</span>
+    </a>
+</nav>
+
+</div></div>
+<!-- /wp:group -->
