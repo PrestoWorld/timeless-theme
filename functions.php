@@ -175,8 +175,8 @@ add_action( 'wp_head', 'timeless_head_meta', 1 );
 if ( ! function_exists( 'timeless_enqueue_assets' ) ) :
 	function timeless_enqueue_assets() {
 		wp_enqueue_style(
-			'timeless-tailwind',
-			get_parent_theme_file_uri( 'assets/css/dist/tailwind.css' ),
+			'timeless-theme',
+			get_parent_theme_file_uri( 'assets/css/dist/theme.css' ),
 			array(),
 			wp_get_theme()->get( 'Version' )
 		);

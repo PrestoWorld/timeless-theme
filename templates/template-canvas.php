@@ -34,7 +34,7 @@ $storeSlogan = (string) ($data['store_slogan'] ?? 'Tiệm Sách & Thuê Sách To
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/content/themes/timeless/assets/css/dist/tailwind.css">
+    <link rel="stylesheet" href="/content/themes/timeless/assets/css/dist/theme.css">
     <?= $headCss ?>
 </head>
 <body class="bg-[#FAF9F5] text-[#1C1C1E] font-sans antialiased selection:bg-[#E05A38]/15 selection:text-[#E05A38]">

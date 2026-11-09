@@ -1,15 +1,10 @@
-@import "tailwindcss";
-
-@source "../../templates/**/*.html";
-@source "../../templates/**/*.php";
-@source "../../parts/**/*.html";
-@source "../../patterns/**/*.html";
-@source "../../*.php";
-
-@theme {
-  --font-sans: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Newsreader', Georgia, serif;
-}
+/*
+ * Timeless Theme - Source CSS
+ *
+ * NOTE: Tailwind runtime has been removed.
+ * The compiled CSS is available at: assets/css/dist/tailwind.css
+ * To regenerate, re-add Tailwind to package.json and run: node build-css.js
+ */
 
 @layer base {
   body {

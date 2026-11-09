@@ -30,11 +30,11 @@
 		"fast-glob": "^3.3.2",
 		"parse5-html-rewriting-stream": "^7.0.0",
 		"postcss": "^8.5.32",
+		"purgecss": "^5.0.0",
 		"semver": "^7.6.3",
 		"string-progressbar": "^1.0.4",
 		"stylelint": "^14.16.1",
-		"table": "^6.8.2",
-		"tailwindcss": "^4.3.3"
+		"table": "^6.8.2"
 	},
 	"scripts": {
 		"lint:css": "stylelint **/*.css -i .gitignore",
@@ -42,10 +42,7 @@
 		"lint:php": "composer run-script lint",
 		"lint:php:fix": "composer run-script format",
 		"lint:theme": "node theme-utils.mjs validate-theme",
-		"lint:patterns:fix": "node theme-utils.mjs escape-patterns --text-domain=timeless",
-		"build:css": "node build-css.js"
+		"lint:patterns:fix": "node theme-utils.mjs escape-patterns --text-domain=timeless"
 	},
-	"dependencies": {
-		"@tailwindcss/postcss": "^4.3.3"
-	}
+	"main": "build-css.js"
 }
