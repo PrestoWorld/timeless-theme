@@ -9,6 +9,28 @@
  * @since Timeless 1.0
  */
 
+/**
+ * Autoloader for Timeless\Blocks namespace.
+ * PSR-4 style: Timeless\Blocks\ClassName -> includes/Blocks/ClassName.php
+ * Lazy loads classes only when instantiated (RAM efficient).
+ */
+spl_autoload_register(function (string $class): void {
+    $prefix = 'Timeless\\Blocks\\';
+    if (str_starts_with($class, $prefix)) {
+        $relativeClass = substr($class, strlen($prefix));
+        $file = get_template_directory() . '/includes/Blocks/' . $relativeClass . '.php';
+        if (is_file($file) && is_readable($file)) {
+            require_once $file;
+        }
+    }
+});
+
+// Initialize Gutenberg block registry (auto-discovers and registers all blocks).
+add_action('after_setup_theme', function () {
+	$registry = \Timeless\Blocks\BlockRegistry::getInstance();
+	$registry->registerAll();
+}, 5);
+
 // Adds theme support for post formats.
 if ( ! function_exists( 'timeless_post_format_setup' ) ) :
 	/**

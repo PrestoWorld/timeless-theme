@@ -1,0 +1,147 @@
+<?php
+
+namespace Timeless\Blocks;
+
+use function absint;
+use function apply_filters;
+use function esc_attr;
+use function esc_html;
+use function esc_url;
+use function get_block_wrapper_attributes;
+use function get_current_user;
+use function get_option;
+use function get_avatar;
+use function home_url;
+use function is_user_logged_in;
+use function wp_logout_url;
+use function wp_login_url;
+use function wp_registration_url;
+
+class UserMenuBlock extends AbstractBlock
+{
+    protected string $blockId = 'jankx/user-menu';
+
+    protected function renderBlock(array $attributes, string $content, ?\WP_Block $block): string
+    {
+        if (is_user_logged_in()) {
+            return $this->renderLoggedInMode($attributes);
+        }
+
+        return $this->renderLoggedOutMode($attributes);
+    }
+
+    protected function renderLoggedInMode(array $attributes): string
+    {
+        $current_user = get_current_user();
+        $avatar_size = absint($attributes['avatarSize'] ?? 35);
+        $show_name = !empty($attributes['showUserName']);
+        $greeting = $attributes['greetingText'] ?? __('Xin chào,', 'timeless');
+
+        $menu_items = [
+            'logout' => [
+                'label' => __('Logout', 'timeless'),
+                'url' => wp_logout_url(home_url()),
+                'icon' => 'dashicons-logout',
+            ],
+        ];
+
+        $menu_items = apply_filters('timeless/user_menu/items', $menu_items, $current_user);
+
+        $wrapper_attributes = get_block_wrapper_attributes([
+            'class' => 'jankx-user-menu logged-in',
+        ]);
+
+        $output = sprintf('<div %s>', $wrapper_attributes);
+
+        $output .= '<div class="user-menu-trigger">';
+
+        if ($show_name) {
+            $output .= '<span class="user-greeting">';
+            if ($greeting) {
+                $output .= sprintf('<span class="greeting-text">%s</span>', esc_html($greeting));
+            }
+            $output .= sprintf('<span class="user-name">%s</span>', esc_html($current_user->display_name));
+            $output .= '</span>';
+        }
+
+        $output .= sprintf(
+            '<div class="user-avatar" style="width:%dpx; height:%dpx;">%s</div>',
+            $avatar_size,
+            $avatar_size,
+            get_avatar($current_user->ID, $avatar_size)
+        );
+        $output .= '</div>';
+
+        $output .= '<div class="user-menu-dropdown">';
+        $output .= '<ul>';
+        foreach ($menu_items as $id => $item) {
+            $output .= sprintf(
+                '<li><a href="%s">%s</a></li>',
+                esc_url($item['url']),
+                esc_html($item['label'])
+            );
+        }
+        $output .= '</ul>';
+        $output .= '</div>';
+
+        $output .= '<script>
+            (function() {
+                var triggers = document.querySelectorAll(".user-menu-trigger");
+                triggers.forEach(function(trigger) {
+                    trigger.addEventListener("click", function(e) {
+                        e.stopPropagation();
+                        var dropdown = this.nextElementSibling;
+                        if (dropdown && dropdown.classList.contains("user-menu-dropdown")) {
+                            dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+                        }
+                    });
+                });
+                document.addEventListener("click", function() {
+                    document.querySelectorAll(".user-menu-dropdown").forEach(function(d) {
+                        d.style.display = "none";
+                    });
+                });
+            })();
+        </script>';
+
+        $output .= '</div>';
+
+        return $output;
+    }
+
+    protected function renderLoggedOutMode(array $attributes): string
+    {
+        $show_login = !empty($attributes['showLogin']);
+        $show_register = !empty($attributes['showRegister']);
+
+        if (!$show_login && !$show_register) {
+            return '';
+        }
+
+        $wrapper_attributes = get_block_wrapper_attributes([
+            'class' => 'jankx-user-menu logged-out',
+        ]);
+
+        $output = sprintf('<div %s>', $wrapper_attributes);
+
+        if ($show_login) {
+            $output .= sprintf(
+                '<a href="%s" class="login-link">%s</a>',
+                wp_login_url(),
+                __('Đăng nhập', 'timeless')
+            );
+        }
+
+        if ($show_register && get_option('users_can_register')) {
+            $output .= sprintf(
+                '<a href="%s" class="register-button">%s</a>',
+                wp_registration_url(),
+                __('Đăng ký', 'timeless')
+            );
+        }
+
+        $output .= '</div>';
+
+        return $output;
+    }
+}
