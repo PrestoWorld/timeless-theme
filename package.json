@@ -22,12 +22,19 @@
 		"npm": ">=10.2.3"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.26.0",
+		"@babel/preset-env": "^7.26.0",
+		"@babel/preset-react": "^7.26.0",
+		"@babel/preset-typescript": "^7.26.0",
 		"@wordpress/stylelint-config": "^22.5.0",
 		"ajv": "^8.17.1",
 		"ajv-draft-04": "^1.0.0",
 		"autoprefixer": "^10.6.2",
+		"babel-jest": "^29.7.0",
 		"chalk": "^5.3.0",
 		"fast-glob": "^3.3.2",
+		"jest": "^29.7.0",
+		"jest-environment-jsdom": "^29.7.0",
 		"parse5-html-rewriting-stream": "^7.0.0",
 		"postcss": "^8.5.32",
 		"purgecss": "^5.0.0",
@@ -42,7 +49,8 @@
 		"lint:php": "composer run-script lint",
 		"lint:php:fix": "composer run-script format",
 		"lint:theme": "node theme-utils.mjs validate-theme",
-		"lint:patterns:fix": "node theme-utils.mjs escape-patterns --text-domain=timeless"
+		"lint:patterns:fix": "node theme-utils.mjs escape-patterns --text-domain=timeless",
+		"test:js": "jest --config jest.config.js"
 	},
 	"main": "build-css.js"
 }
