@@ -237,6 +237,10 @@ abstract class AbstractBlock implements BlockRendererInterface
             $this->register();
         }
 
+        if (!$this->shouldRender($attributes)) {
+            return '';
+        }
+
         return $this->renderBlock($attributes, $content, $block);
     }
 
