@@ -22,7 +22,7 @@ use function wp_kses_post;
 /**
  * Class AdvancedButton
  */
-class AdvancedButton extends AbstractBlock
+class AdvancedButtonBlock extends AbstractBlock
 {
     /**
      * Block ID

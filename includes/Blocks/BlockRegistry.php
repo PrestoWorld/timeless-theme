@@ -125,11 +125,23 @@ class BlockRegistry
         $parts = explode('/', $blockId, 2);
         $shortName = $parts[count($parts) - 1] ?? $blockId;
 
-        $className = str_replace('-', ' ', $shortName);
-        $className = ucwords($className);
-        $className = str_replace(' ', '', $className);
+        $pascal = str_replace('-', ' ', $shortName);
+        $pascal = ucwords($pascal);
+        $pascal = str_replace(' ', '', $pascal);
 
-        return 'Timeless\\Blocks\\' . $className;
+        $candidates = [
+            'Timeless\\Blocks\\' . $pascal . 'Block',
+            'Timeless\\Blocks\\' . $pascal,
+            AbstractBlock::class,
+        ];
+
+        foreach ($candidates as $candidate) {
+            if ($candidate !== AbstractBlock::class && class_exists($candidate)) {
+                return $candidate;
+            }
+        }
+
+        return AbstractBlock::class;
     }
 
     public function registerAll(): void
