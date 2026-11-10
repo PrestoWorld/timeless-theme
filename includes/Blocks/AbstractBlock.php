@@ -2,9 +2,9 @@
 /**
  * Abstract Block Base Class
  *
- * Base class for all Gutenberg block implementations. Provides
- * registration logic, asset resolution, and a render contract.
- * Uses lazy initialization to minimize memory footprint.
+ * Base class for all Gutenberg block implementations. Follows the
+ * Jankx Gutenberg Block pattern: uses register_block_type_from_metadata()
+ * to read block.json directly, with optional render_callback for SSR.
  *
  * @package Timeless\Blocks
  */
@@ -14,10 +14,13 @@ declare(strict_types=1);
 namespace Timeless\Blocks;
 
 use function apply_filters;
+use function esc_attr;
+use function esc_html;
+use function esc_url;
 use function file_exists;
+use function is_admin;
 use function is_readable;
-use function json_decode;
-use function json_encode;
+use function register_block_type_from_metadata;
 use function sprintf;
 use function wp_enqueue_script;
 use function wp_enqueue_style;
@@ -31,40 +34,35 @@ use function wp_register_style;
 abstract class AbstractBlock implements BlockRendererInterface
 {
     /**
-     * Block metadata (lazy loaded)
+     * Block ID (e.g. jankx/advanced-button)
      */
-    private ?BlockMetadata $metadata = null;
+    protected string $blockId = '';
 
     /**
-     * Block name (e.g. jankx/advanced-button)
+     * Path to block directory containing block.json
      */
-    private string $name;
+    protected string $blockPath = '';
 
     /**
-     * Absolute path to block directory
-     */
-    private string $blockPath;
-
-    /**
-     * Whether the block has been registered with WordPress
+     * Whether the block has been registered
      */
     private bool $registered = false;
 
     /**
      * AbstractBlock constructor.
      */
-    public function __construct(string $name, string $blockPath)
+    public function __construct(string $blockId = '', string $blockPath = '')
     {
-        $this->name = $name;
+        $this->blockId = $blockId;
         $this->blockPath = rtrim($blockPath, '/');
     }
 
     /**
-     * Get block name
+     * Get block ID
      */
-    public function getName(): string
+    public function getBlockId(): string
     {
-        return $this->name;
+        return $this->blockId;
     }
 
     /**
@@ -76,61 +74,42 @@ abstract class AbstractBlock implements BlockRendererInterface
     }
 
     /**
-     * Get block metadata (lazy loaded from block.json)
+     * Set block path
      */
-    public function getMetadata(): BlockMetadata
+    public function setBlockPath(string $path): void
     {
-        if ($this->metadata === null) {
-            $this->metadata = $this->loadMetadata();
-        }
-        return $this->metadata;
+        $this->blockPath = rtrim($path, '/');
     }
 
     /**
-     * Load and parse block.json
+     * Boot block and initialize hooks.
+     * Called before register().
      */
-    protected function loadMetadata(): BlockMetadata
+    public function boot(): void
     {
-        $blockJson = $this->blockPath . '/block.json';
+        // Override in child classes to register actions/filters
+    }
 
-        if (!file_exists($blockJson) || !is_readable($blockJson)) {
-            // Fallback: minimal metadata from class name
-            return new BlockMetadata(
-                $this->name,
-                $this->blockPath,
-                [
-                    'name'        => $this->name,
-                    'title'       => $this->name,
-                    'category'    => 'common',
-                    'textdomain'  => 'timeless',
-                    'attributes'  => [],
-                    'supports'    => [],
-                ]
-            );
-        }
+    /**
+     * Register editor assets (admin only).
+     */
+    protected function registerEditorAssets(): void
+    {
+        // Override in child classes
+    }
 
-        $json = file_get_contents($blockJson);
-        if ($json === false) {
-            throw new \RuntimeException(sprintf(
-                'Failed to read block.json for block "%s"',
-                $this->name
-            ));
-        }
-
-        $data = json_decode($json, true);
-        if ($data === null) {
-            throw new \RuntimeException(sprintf(
-                'Invalid JSON in block.json for block "%s"',
-                $this->name
-            ));
-        }
-
-        return new BlockMetadata($this->name, $this->blockPath, $data);
+    /**
+     * Register frontend assets (frontend only).
+     */
+    protected function registerFrontendAssets(): void
+    {
+        // Override in child classes
     }
 
     /**
      * Register the block with WordPress.
-     * Optimized: only registers once, reuses metadata.
+     * Uses register_block_type_from_metadata() to read block.json directly.
+     * Optimized: registers once, assets only enqueued when needed.
      */
     public function register(): void
     {
@@ -138,90 +117,186 @@ abstract class AbstractBlock implements BlockRendererInterface
             return;
         }
 
-        $metadata = $this->getMetadata();
-        $name = $this->name;
+        if (!$this->blockId || !$this->blockPath) {
+            return;
+        }
 
-        $blockArgs = [
-            'attributes'   => $metadata->getAttributes(),
-            'supports'     => $metadata->getSupports(),
-            'styles'       => $metadata->getStyles(),
-            'category'     => $metadata->getCategory(),
-            'title'        => $metadata->getTitle(),
-            'description'  => $metadata->getDescription(),
-            'textdomain'   => $metadata->getTextdomain(),
-            'render_callback' => [$this, 'renderBlock'],
-        ];
+        $blockJson = $this->blockPath . '/block.json';
+        if (!file_exists($blockJson) || !is_readable($blockJson)) {
+            return;
+        }
 
-        // Allow filtering block args before registration
-        $blockArgs = apply_filters('timeless_block_args', $blockArgs, $name, $this);
+        $args = [];
 
-        register_block_type($name, $blockArgs);
+        // Add render_callback if child class implements render()
+        if (method_exists($this, 'render') && ($this::class !== AbstractBlock::class)) {
+            $args['render_callback'] = [$this, 'render'];
+        }
 
-        // Register frontend assets if defined
-        $this->registerFrontendAssets($metadata);
+        $args = apply_filters('timeless_block_args', $args, $this->blockId, $this);
+
+        $registered = register_block_type_from_metadata($this->blockPath, $args);
+
+        if ($registered instanceof \WP_Block_Type) {
+            $this->registerAssets($registered);
+        }
 
         $this->registered = true;
     }
 
     /**
-     * Register frontend assets (style, viewScript) lazily.
-     * Assets are registered but only enqueued when block is rendered.
+     * Register block assets (style, viewScript).
+     * Called during register() - assets are registered but only enqueued
+     * when block is actually rendered on the page.
      */
-    protected function registerFrontendAssets(BlockMetadata $metadata): void
+    protected function registerAssets(\WP_Block_Type $block): void
     {
-        $handlePrefix = str_replace('/', '-', $this->name);
+        $version = wp_get_theme()->get('Version');
+        $handlePrefix = str_replace('/', '-', $this->blockId);
 
         // Register block style
-        if ($metadata->hasAsset('style')) {
-            $url = $metadata->getAssetUrl('style');
-            if ($url) {
-                $handle = $handlePrefix . '-style';
-                wp_register_style($handle, $url, [], wp_get_theme()->get('Version'));
-                wp_enqueue_style($handle);
+        if ($block->style) {
+            $handle = $handlePrefix . '-style';
+            if (!wp_style_is($handle, 'registered')) {
+                // Try to resolve URL from block metadata
+                $url = $this->resolveAssetUrl('style');
+                if ($url) {
+                    wp_register_style($handle, $url, [], $version);
+                }
             }
+            wp_enqueue_style($handle);
         }
 
         // Register view script (frontend JS)
-        if ($metadata->hasAsset('viewScript')) {
-            $url = $metadata->getAssetUrl('viewScript');
-            if ($url) {
-                $handle = $handlePrefix . '-view';
-                wp_register_script($handle, $url, [], wp_get_theme()->get('Version'), true);
-                wp_enqueue_script($handle);
+        if ($block->view_script) {
+            $handle = $handlePrefix . '-view';
+            if (!wp_script_is($handle, 'registered')) {
+                $url = $this->resolveAssetUrl('viewScript');
+                if ($url) {
+                    wp_register_script($handle, $url, [], $version, true);
+                }
             }
+            wp_enqueue_script($handle);
         }
     }
 
     /**
-     * WordPress render_callback wrapper.
-     * Ensures assets are enqueued then delegates to render().
+     * Resolve asset URL from block metadata "file:..." references.
      */
-    public function renderBlock(array $attributes, string $content = ''): string
+    protected function resolveAssetUrl(string $type): ?string
     {
-        if (!$this->shouldRender($attributes)) {
-            return '';
+        $blockJson = $this->blockPath . '/block.json';
+        if (!file_exists($blockJson)) {
+            return null;
         }
 
-        // Ensure frontend assets are enqueued at render time
-        $this->registerFrontendAssets($this->getMetadata());
+        $json = file_get_contents($blockJson);
+        if ($json === false) {
+            return null;
+        }
 
-        return $this->render($attributes, $content);
+        $data = json_decode($json, true);
+        if (!is_array($data)) {
+            return null;
+        }
+
+        $fieldMap = [
+            'style'    => 'style',
+            'viewScript' => 'viewScript',
+        ];
+
+        $key = $fieldMap[$type] ?? $type;
+        $ref = $data[$key] ?? null;
+
+        if (!is_string($ref) || str_starts_with($ref, 'file:') === false) {
+            return null;
+        }
+
+        $relativePath = ltrim(substr($ref, 5), '/');
+        $absolutePath = $this->blockPath . '/' . $relativePath;
+
+        if (!file_exists($absolutePath)) {
+            return null;
+        }
+
+        return str_replace(
+            get_template_directory(),
+            get_template_directory_uri(),
+            $absolutePath
+        );
+    }
+
+    /**
+     * WordPress render_callback.
+     * Ensures frontend assets are enqueued then delegates to render().
+     */
+    public function render(array $attributes = [], string $content = '', \WP_Block $block = null): string
+    {
+        // Ensure frontend assets are enqueued at render time
+        if (!$this->registered) {
+            $this->register();
+        }
+
+        return $this->renderBlock($attributes, $content, $block);
+    }
+
+    /**
+     * Render the block on the frontend.
+     * Override in child classes for SSR output.
+     *
+     * @param array  $attributes Block attributes
+     * @param string $content    Inner block content
+     * @param \WP_Block|null $block Block instance
+     * @return string HTML output
+     */
+    protected function renderBlock(array $attributes, string $content, ?\WP_Block $block): string
+    {
+        return $content;
+    }
+
+    /**
+     * Get block CSS class name.
+     * Converts jankx/advanced-button -> wp-block-jankx-advanced-button
+     */
+    public function getBlockClass(string $extra = ''): string
+    {
+        $class = 'wp-block-' . str_replace('/', '-', $this->blockId);
+        if ($extra !== '') {
+            $class .= ' ' . $extra;
+        }
+        return $class;
     }
 
     /**
      * Get frontend asset handles for this block.
-     * Used by BlockRegistry to conditionally enqueue assets.
+     * Returns handles registered via register_block_type_from_metadata.
+     *
+     * @return string[] Asset handles
      */
     public function getFrontendAssets(): array
     {
         $assets = [];
-        $metadata = $this->getMetadata();
-        $handlePrefix = str_replace('/', '-', $this->name);
+        $handlePrefix = str_replace('/', '-', $this->blockId);
 
-        if ($metadata->hasAsset('style')) {
+        $blockJson = $this->blockPath . '/block.json';
+        if (!file_exists($blockJson)) {
+            return $assets;
+        }
+
+        $json = file_get_contents($blockJson);
+        if ($json === false) {
+            return $assets;
+        }
+
+        $data = json_decode($json, true);
+        if (!is_array($data)) {
+            return $assets;
+        }
+
+        if (isset($data['style'])) {
             $assets[] = $handlePrefix . '-style';
         }
-        if ($metadata->hasAsset('viewScript')) {
+        if (isset($data['viewScript'])) {
             $assets[] = $handlePrefix . '-view';
         }
 
@@ -229,7 +304,10 @@ abstract class AbstractBlock implements BlockRendererInterface
     }
 
     /**
-     * Default: block should always render.
+     * Check if block should render on frontend.
+     *
+     * @param array $attributes Block attributes
+     * @return bool True to render, false to skip output
      */
     public function shouldRender(array $attributes): bool
     {
@@ -237,24 +315,7 @@ abstract class AbstractBlock implements BlockRendererInterface
     }
 
     /**
-     * Get block attributes with defaults applied.
-     */
-    public function getAttributesWithDefaults(array $attributes = []): array
-    {
-        $schema = $this->getMetadata()->getAttributes();
-        $merged = [];
-
-        foreach ($schema as $attrName => $attrDef) {
-            $default = $attrDef['default'] ?? null;
-            $merged[$attrName] = $attributes[$attrName] ?? $default;
-        }
-
-        return array_merge($merged, $attributes);
-    }
-
-    /**
      * Escape and output attributes as HTML data attributes.
-     * Uses wp_json_encode for safe attribute serialization.
      */
     protected function dataAttributes(array $attributes): string
     {
@@ -265,18 +326,5 @@ abstract class AbstractBlock implements BlockRendererInterface
             }
         }
         return $html;
-    }
-
-    /**
-     * Get block CSS class name.
-     * Converts jankx/advanced-button -> wp-block-jankx-advanced-button
-     */
-    public function getBlockClass(string $extra = ''): string
-    {
-        $class = 'wp-block-' . str_replace('/', '-', $this->name);
-        if ($extra !== '') {
-            $class .= ' ' . $extra;
-        }
-        return $class;
     }
 }

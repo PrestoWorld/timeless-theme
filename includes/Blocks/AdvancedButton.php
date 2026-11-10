@@ -15,6 +15,7 @@ namespace Timeless\Blocks;
 use function esc_attr;
 use function esc_html;
 use function esc_url;
+use function preg_match;
 use function sprintf;
 use function wp_kses_post;
 
@@ -24,13 +25,19 @@ use function wp_kses_post;
 class AdvancedButton extends AbstractBlock
 {
     /**
+     * Block ID
+     */
+    protected string $blockId = 'jankx/advanced-button';
+
+    /**
      * Render the advanced button block.
      *
-     * @param array $attributes Block attributes
-     * @param string $content Inner content
+     * @param array  $attributes Block attributes
+     * @param string $content    Inner block content
+     * @param \WP_Block|null $block Block instance
      * @return string HTML
      */
-    public function render(array $attributes, string $content = ''): string
+    protected function renderBlock(array $attributes, string $content, ?\WP_Block $block): string
     {
         $attributes = $this->getAttributesWithDefaults($attributes);
 
@@ -51,9 +58,39 @@ class AdvancedButton extends AbstractBlock
         $renderIconOutside = $attributes['renderIconOutside'] ?? false;
         $className     = $attributes['className'] ?? '';
 
+        // Respect post type condition
+        if ($conditionType === 'post-type' && $showForPostType !== '') {
+            $currentPostType = null;
+            if ($block instanceof \WP_Block) {
+                $ctx = is_array($block->context ?? null) ? $block->context : [];
+                $currentPostType = $ctx['postType'] ?? ($ctx['previewPostType'] ?? null);
+            }
+            if (!$currentPostType) {
+                $postId = get_the_ID();
+                if ($postId) {
+                    $currentPostType = get_post_type($postId);
+                } elseif (isset($GLOBALS['post']) && $GLOBALS['post'] instanceof \WP_Post) {
+                    $currentPostType = $GLOBALS['post']->post_type;
+                }
+            }
+            if ($currentPostType !== null && $currentPostType !== $showForPostType) {
+                return '';
+            }
+        }
+
+        // Fallback: extract data attributes from saved content when attributes are defaults
+        if (($conditionType === 'always' || $showForPostType === '') && is_string($content) && $content !== '') {
+            if (preg_match('/data-condition-type="([^"]*)"/', $content, $m)) {
+                $conditionType = $m[1] ?: $conditionType;
+            }
+            if (preg_match('/data-show-for-post-type="([^"]*)"/', $content, $m2)) {
+                $showForPostType = $m2[1] ?: $showForPostType;
+            }
+        }
+
         // Build wrapper classes
         $wrapperClasses = $this->getBlockClass('jankx-advanced-button');
-        if ($attributes['useIconBlocks'] ?? false) {
+        if (!empty($attributes['useIconBlocks'])) {
             $wrapperClasses .= ' icon-position-' . esc_attr($iconPosition);
         }
 
@@ -65,7 +102,7 @@ class AdvancedButton extends AbstractBlock
         $textColor = $attributes['textColor'] ?? '';
         $gradient = $attributes['gradient'] ?? '';
 
-        if ($bgColor && !isset($attributes['is-style-outline'])) {
+        if ($bgColor && empty($attributes['is-style-outline'])) {
             $linkClasses .= ' has-' . esc_attr($bgColor) . '-background-color';
         }
         if ($textColor) {
@@ -76,10 +113,10 @@ class AdvancedButton extends AbstractBlock
         }
 
         // Style variants
-        if (isset($attributes['is-style-outline'])) {
+        if (!empty($attributes['is-style-outline'])) {
             $linkClasses .= ' is-style-outline';
         }
-        if (isset($attributes['is-style-text-link'])) {
+        if (!empty($attributes['is-style-text-link'])) {
             $linkClasses .= ' is-style-text-link';
         }
 
@@ -111,7 +148,7 @@ class AdvancedButton extends AbstractBlock
             $linkClasses .= ' ' . esc_attr($className);
         }
 
-        // Build inline styles (merged from block props + custom)
+        // Build inline styles
         $style = $this->buildStyles($attributes);
 
         // Build data attributes
@@ -143,10 +180,10 @@ class AdvancedButton extends AbstractBlock
             }
         }
 
-        // Build inner content (text + icon)
+        // Build inner content
         $innerContent = $this->renderInnerContent($attributes, $content, $renderIconOutside);
 
-        // Build the trigger element based on trigger type
+        // Build the trigger element
         $triggerHtml = $this->renderTriggerElement(
             $triggerType,
             $buttonType,
@@ -162,9 +199,7 @@ class AdvancedButton extends AbstractBlock
 
         // Wrap with icon outside if needed
         if ($renderIconOutside) {
-            $iconMarkup = $renderIconOutside
-                ? $this->renderIconWrapper($attributes)
-                : '';
+            $iconMarkup = $this->renderIconWrapper($attributes);
             $iconPositionLeftTop = in_array($iconPosition, ['left', 'top'], true);
 
             return sprintf(
@@ -190,7 +225,6 @@ class AdvancedButton extends AbstractBlock
     {
         $styles = [];
 
-        // Border radius
         $border = $attributes['style']['border'] ?? [];
         if (isset($border['radius'])) {
             $radius = $border['radius'];
@@ -205,7 +239,6 @@ class AdvancedButton extends AbstractBlock
             }
         }
 
-        // Border color/width/style
         if (isset($border['color'])) {
             $styles[] = sprintf('border-color:%s;', esc_attr($border['color']));
         }
@@ -216,7 +249,6 @@ class AdvancedButton extends AbstractBlock
             $styles[] = sprintf('border-style:%s;', esc_attr($border['style']));
         }
 
-        // Custom text color
         $styleColor = $attributes['style']['color'] ?? [];
         if (isset($styleColor['text'])) {
             $styles[] = sprintf('color:%s;', esc_attr($styleColor['text']));
@@ -227,8 +259,7 @@ class AdvancedButton extends AbstractBlock
             $styles[] = sprintf('background-color:%s;', esc_attr($styleColor['background']));
         }
 
-        // Outline style: transparent background
-        if (isset($attributes['is-style-outline'])) {
+        if (!empty($attributes['is-style-outline'])) {
             $styles[] = 'background-color:transparent;';
             $styles[] = 'background-image:none;';
             if (isset($styleColor['text'])) {
@@ -236,8 +267,7 @@ class AdvancedButton extends AbstractBlock
             }
         }
 
-        // Text link style
-        if (isset($attributes['is-style-text-link'])) {
+        if (!empty($attributes['is-style-text-link'])) {
             $styles[] = 'background-color:transparent;';
             $styles[] = 'background-image:none;';
             $styles[] = 'border:none;';
@@ -257,12 +287,10 @@ class AdvancedButton extends AbstractBlock
 
         $html = '';
 
-        // Icon wrapper (InnerBlocks.Content equivalent - output saved inner blocks)
         if (!$renderIconOutside) {
             $html .= sprintf('<span class="button-icon-wrapper">%s</span>', wp_kses_post($content));
         }
 
-        // Text
         if ($showLabel) {
             $sanitizedText = preg_replace('/<\/?a[^>]*>/i', '', $text);
             $html .= sprintf('<span class="button-text">%s</span>', esc_html($sanitizedText));
@@ -345,10 +373,31 @@ class AdvancedButton extends AbstractBlock
     }
 
     /**
-     * Advanced button should always render on frontend.
+     * Get block attributes with defaults applied.
      */
-    public function shouldRender(array $attributes): bool
+    public function getAttributesWithDefaults(array $attributes = []): array
     {
-        return true;
+        $blockJson = $this->blockPath . '/block.json';
+        if (!file_exists($blockJson)) {
+            return $attributes;
+        }
+
+        $json = file_get_contents($blockJson);
+        if ($json === false) {
+            return $attributes;
+        }
+
+        $data = json_decode($json, true);
+        if (!is_array($data) || !isset($data['attributes'])) {
+            return $attributes;
+        }
+
+        $merged = [];
+        foreach ($data['attributes'] as $attrName => $attrDef) {
+            $default = $attrDef['default'] ?? null;
+            $merged[$attrName] = $attributes[$attrName] ?? $default;
+        }
+
+        return array_merge($merged, $attributes);
     }
 }
